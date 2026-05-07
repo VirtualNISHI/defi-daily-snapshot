@@ -223,7 +223,7 @@ def render_snapshot_png(
         )
         draw.text(
             (PAD, footer_y),
-            "Auto-generated 3×/day · Data via DefiLlama public API",
+            "Auto-generated 2×/day · Data via DefiLlama public API",
             font=footer_font,
             fill=DIM,
         )

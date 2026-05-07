@@ -1,6 +1,6 @@
 # DeFi Daily Snapshot
 
-A free, low-maintenance bot that posts a 1200×720 image card to **Discord and X** three times per day, summarising the DeFi market state from [DefiLlama](https://defillama.com)'s public API.
+A free, low-maintenance bot that posts a 1200×720 image card to **Discord and X** twice per day, summarising the DeFi market state from [DefiLlama](https://defillama.com)'s public API.
 
 Three sections:
 
@@ -18,7 +18,7 @@ Adapted from the [polymarket-BOT](https://github.com/VirtualNISHI/polymarket-BOT
 | **Image** | Pillow + pilmoji + Noto CJK (1200×720 dark card) |
 | **Translation** | Gemini 2.5 Flash (free tier) — translates protocol categories to JP |
 | **Persistence** | SQLite, force-pushed to `bot-state` branch each run |
-| **Schedule** | GitHub Actions cron, 3×/day at 00:05 / 08:05 / 16:05 JST |
+| **Schedule** | GitHub Actions cron, 2×/day at 08:05 / 20:05 JST |
 | **Posting** | Discord webhook (image attachment) + X v2 tweet with v1.1 media upload |
 
 ## Setup
@@ -37,7 +37,7 @@ Adapted from the [polymarket-BOT](https://github.com/VirtualNISHI/polymarket-BOT
 
 3. **Test the workflow** — Actions → `daily-snapshot` → Run workflow with `dry_run: true` to render and log without posting. Verify the rendered image, then run with `dry_run: false`.
 
-4. **Schedule.** Default cadence is 00:05 / 08:05 / 16:05 JST (`5 15,23,7 * * *` UTC). Edit `.github/workflows/daily-snapshot.yml` to change.
+4. **Schedule.** Default cadence is 08:05 / 20:05 JST (`5 23,11 * * *` UTC). Edit `.github/workflows/daily-snapshot.yml` to change.
 
 ## Local dry-run
 

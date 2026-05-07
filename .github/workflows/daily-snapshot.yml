@@ -1,14 +1,14 @@
 name: daily-snapshot
 
-# Posts a DeFi daily-snapshot card to Discord and X 3× per day.
-# JST 00:00 / 08:00 / 16:00 — 8 hours apart, hitting the morning, working
-# hours, and evening windows. Cron is :05 to dodge the GH Actions top-of-hour
-# rush (the schedule trigger is best-effort and can drift 5–15 min under load).
+# Posts a DeFi daily-snapshot card to Discord and X 2× per day.
+# JST 08:05 / 20:05 — 12 hours apart, hitting the morning open and the
+# late-evening US-market wrap windows. Cron is :05 to dodge the GH Actions
+# top-of-hour rush (the schedule trigger is best-effort and can drift
+# 5–15 min under load).
 on:
   schedule:
-    - cron: '5 15 * * *'  # 00:05 JST  (15:05 UTC, prev day)
     - cron: '5 23 * * *'  # 08:05 JST  (23:05 UTC, prev day)
-    - cron: '5 7 * * *'   # 16:05 JST  (07:05 UTC, same day)
+    - cron: '5 11 * * *'  # 20:05 JST  (11:05 UTC, same day)
   workflow_dispatch:
     inputs:
       dry_run:

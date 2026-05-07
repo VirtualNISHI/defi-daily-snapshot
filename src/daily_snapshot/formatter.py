@@ -57,7 +57,7 @@ def build_discord_embed(
     chains: list[SnapshotRow],
     aliases: dict[str, str],
     color: int = DISCORD_COLOR_DEFAULT,
-    footer_text: str = "Auto-generated 3×/day · Data via DefiLlama public API",
+    footer_text: str = "Auto-generated 2×/day · Data via DefiLlama public API",
 ) -> dict[str, Any]:
     date_str = snapshot_date.astimezone(JST).strftime("%Y-%m-%d")
     fields: list[dict[str, Any]] = []
