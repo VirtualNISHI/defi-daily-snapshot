@@ -1,0 +1,45 @@
+daily_snapshot:
+  # In the DeFi build, ``min_volume_24h_usd`` is reinterpreted as min protocol
+  # TVL in USD. $100M default — drops the long tail where 24h % swings are
+  # dominated by oracle / accounting noise.
+  min_volume_24h_usd: 100000000
+
+  # Per-section row counts. The renderer is hard-coded for 3 sections × 3 rows
+  # but you can lower a count to leave white space.
+  # In the DeFi build:
+  #   movers_count → top gainers
+  #   crypto_count → top losers
+  #   macro_count  → top chains by current TVL
+  movers_count: 3
+  crypto_count: 3
+  macro_count: 3
+  politics_count: 0          # unused in the DeFi build
+
+  # Unused legacy knobs (kept so config.py loader doesn't error). The DeFi
+  # collector hard-codes its category exclusions in src/daily_snapshot/collector.py.
+  fetch_limit: 200
+  excluded_tag_slugs: []
+  category_map:
+    Protocol: [protocol]
+    Chain: [chain]
+
+  label_max_chars: 36
+  discord_color: 0x3fb950   # #3fb950 (green) — DeFi accent
+  enable_discord: true
+  enable_x: true
+
+  # Render a 1200×720 PNG card and attach to Discord/X. Set false to fall
+  # back to embed/tweet text only.
+  image_mode: true
+
+  # Auto-translate row labels (mostly the protocol category) to Japanese
+  # via Gemini. Cached in market_jp_label table — each unique slug is
+  # translated once. Manual ``display_aliases`` always win.
+  enable_jp_translation: true
+  jp_translation_provider: gemini
+  jp_translation_model: gemini-2.5-flash-lite
+
+  # Manual overrides: { defillama_slug: japanese_label }
+  display_aliases: {}
+  #   aave: "Aave (レンディング)"
+  #   lido: "Lido (リキッドステーキング)"
